@@ -13,7 +13,7 @@ const axios = require('axios');
 
 export default class login extends Component {
     async componentDidMount() {
-        console.log('here1');
+        // console.log('here1');
         axios({
             method: 'POST', url: 'https://empresas.ioasys.com.br/api/v1/users/auth/sign_in', data: {
                 email: 'testeapple@ioasys.com.br',
@@ -22,7 +22,7 @@ export default class login extends Component {
             headers: { 'Content-Type': 'application/json; charset=utf-8' }
         }).then(function (response) {
             // handle success
-            console.log(response);
+            // console.log(response);
         })
             .catch(function (error) {
                 // handle error
