@@ -6,14 +6,14 @@ export default class LoginScreen extends Component {
         header: null,
     };
     onPress = () => {
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('Login')
     }
     render() {
         return (
             <View>
                 <TouchableHighlight onPress={this.onPress}>
                     <Text>
-                        To Home
+                        To Login
                     </Text>
                 </TouchableHighlight>
             </View>

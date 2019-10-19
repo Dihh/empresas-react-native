@@ -7,31 +7,22 @@
  */
 
 import React, { Component } from 'react';
-import LoginComponent from './components/LoginComponent'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 
-
-class LoginScreen extends Component {
-  static navigationOptions = {
-    header: null,
-  };
-  render() {
-    return (
-      <LoginComponent></LoginComponent>
-    )
-  };
-};
+import LoginScreen from './screens/LoginScreen'
+import HomeScreen from './screens/homeScreen'
 
 const MainNavigator = createStackNavigator({
   Login: {
     screen: LoginScreen
+  },
+  Home: {
+    screen: HomeScreen
   }
 })
 
-const App = createAppContainer(MainNavigator, {
-  header: null
-})
+const AppContainer = createAppContainer(MainNavigator)
 
-export default App
+export default AppContainer
 
