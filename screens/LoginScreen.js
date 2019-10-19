@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, TextInput, Dimensions, } from 'react-native'
-import { placeholder } from '@babel/types';
 import api from '../api/api'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { login } from './redux/actions'
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class LoginScreen extends Component {
+const LoginScreen = class LoginScreen extends Component {
     state = {
-        login: '',
-        password: ''
+        email: 'testeapple@ioasys.com.br',
+        password: '12341234'
     }
     static navigationOptions = {
         header: null,
     };
-    login = async () => {
+    lg = async () => {
         try {
-            const login = await api.login()
-            const accessToken = login.headers['access-token'];
-            const client = login.headers.client;
-            const uid = login.headers.uid;
-            console.log(accessToken, client, uid)
+            const login = await api.login({ email: this.state.email, password: this.state.password })
+            this.props.login(login.headers)
             this.props.navigation.navigate('Home')
         } catch (e) {
-            console.log(e);
-            alert('error');
+            alert('Invalid user or password!');
         }
-
-
 
     }
     render() {
@@ -38,8 +34,8 @@ export default class LoginScreen extends Component {
                 <TextInput style={[styles.textInput]}
                     placeholder={"E-mail"}
                     placeholderTextColor={'#fff'}
-                    value={this.state.login}
-                    onChangeText={(login) => this.setState({ login })}
+                    value={this.state.email}
+                    onChangeText={(email) => this.setState({ email })}
                 />
                 <TextInput style={[styles.textInput]}
                     placeholder={"Password"}
@@ -49,7 +45,7 @@ export default class LoginScreen extends Component {
                     onChangeText={(password) => this.setState({ password })}
                 />
 
-                <TouchableHighlight style={[styles.button]} onPress={this.login}>
+                <TouchableHighlight style={[styles.button]} onPress={this.lg}>
                     <Text style={[styles.buttonText]}>
                         Login
                     </Text>
@@ -60,6 +56,18 @@ export default class LoginScreen extends Component {
         )
     }
 }
+
+const mapStateProps = state => ({
+    accessToken: state.empresa.accessToken,
+    client: state.empresa.client,
+    uid: state.empresa.uid
+})
+
+const mapDispatchProps = dispatch => bindActionCreators({
+    login
+}, dispatch)
+
+export default connect(mapStateProps, mapDispatchProps)(LoginScreen)
 
 const styles = StyleSheet.create({
     logoText: {

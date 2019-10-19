@@ -9,9 +9,12 @@
 import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
-
+import { combineReducers, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import empresaReducer from './screens/redux/reducers'
 import LoginScreen from './screens/LoginScreen'
 import HomeScreen from './screens/homeScreen'
+
 
 const MainNavigator = createStackNavigator({
   Login: {
@@ -24,5 +27,15 @@ const MainNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(MainNavigator)
 
-export default AppContainer
+const reducers = combineReducers({
+  empresa: empresaReducer
+})
+
+const App = () => (
+  <Provider store={createStore(reducers)}>
+    <AppContainer></AppContainer>
+  </Provider>
+)
+
+export default App
 
