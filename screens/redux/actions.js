@@ -7,4 +7,13 @@ export function login(headers) {
         type: 'login',
         payload: el
     }
+
+}
+
+export function show(id) {
+    return {
+        type: 'show',
+        payload: id
+    }
+
 }

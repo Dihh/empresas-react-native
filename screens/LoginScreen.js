@@ -14,6 +14,9 @@ const LoginScreen = class LoginScreen extends Component {
     static navigationOptions = {
         header: null,
     };
+    componentDidMount() {
+
+    }
     lg = async () => {
         try {
             const login = await api.login({ email: this.state.email, password: this.state.password })

@@ -14,6 +14,7 @@ import { Provider } from 'react-redux'
 import empresaReducer from './screens/redux/reducers'
 import LoginScreen from './screens/LoginScreen'
 import HomeScreen from './screens/homeScreen'
+import DetailsScreen from './screens/details'
 
 
 const MainNavigator = createStackNavigator({
@@ -22,6 +23,9 @@ const MainNavigator = createStackNavigator({
   },
   Home: {
     screen: HomeScreen
+  },
+  Details: {
+    screen: DetailsScreen
   }
 })
 
