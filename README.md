@@ -24,3 +24,9 @@ justificativa de cada biblioteca:
 "react-redux": Utilizado para manter dados no state global e utilizar nos componentes 
 
 "redux":  Utilizado para manter dados no state global e utilizar nos componentes 
+
+
+
+obs:
+
+Pequenos bugs de usabilidade que não deu tempo de resolver ='(
