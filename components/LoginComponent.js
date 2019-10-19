@@ -8,29 +8,13 @@ import {
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
-const axios = require('axios');
+
 
 
 export default class login extends Component {
     async componentDidMount() {
         // console.log('here1');
-        axios({
-            method: 'POST', url: 'https://empresas.ioasys.com.br/api/v1/users/auth/sign_in', data: {
-                email: 'testeapple@ioasys.com.br',
-                password: '12341234'
-            },
-            headers: { 'Content-Type': 'application/json; charset=utf-8' }
-        }).then(function (response) {
-            // handle success
-            // console.log(response);
-        })
-            .catch(function (error) {
-                // handle error
-                console.log(1, error);
-            })
-            .finally(function () {
-                // always executed
-            });
+
     }
     render() {
         return (
