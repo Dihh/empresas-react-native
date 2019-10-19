@@ -12,6 +12,7 @@ react-native run -android
 
 
 justificativa de cada biblioteca:
+
 "axios": acessar api
 
 "react-native-gesture-handler": Necessário para navegação
